@@ -1,20 +1,18 @@
-'use client'
-
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
 import ClientWrapper from './ClientWrapper';
+import Image from "next/image";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+// import { Geist, Geist_Mono } from "next/font/google";
+// const geistSans = Geist({
+//   variable: "--font-geist-sans",
+//   subsets: ["latin"],
+// });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+// const geistMono = Geist_Mono({
+//   variable: "--font-geist-mono",
+//   subsets: ["latin"],
+// });
 
 export const metadata: Metadata = {
   title: "Machyna",
@@ -24,7 +22,7 @@ export const metadata: Metadata = {
 function Header() {
   return(
     <header className="flex items-center justify-between px-16 py-7 text-gray-700 text-lg  w-full border-b border-gray-300 mb-4">
-      <img
+      <Image
         src="/img/machyna_logo_black_text.png"
         alt="Machyna Logo" 
         className="h-14"
@@ -58,10 +56,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className="...">
-        <Header />
-        <BottomHeader />
-        <ClientWrapper>{children}</ClientWrapper>
-        <Footer />
+        <ClientWrapper>
+          <Header />
+          <BottomHeader />
+          {children}
+          <Footer />
+        </ClientWrapper>
       </body>
     </html>
   );

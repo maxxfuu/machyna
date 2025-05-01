@@ -14,7 +14,7 @@ import Image from "next/image";
 //   subsets: ["latin"],
 // });
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: "Machyna",
   description: "Enrich your shopping journey with Machyna AI SmartCart",
 };

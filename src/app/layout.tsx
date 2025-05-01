@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-import { usePathname } from 'next/navigation';
+import ClientWrapper from './ClientWrapper';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -54,30 +54,14 @@ function Footer() {
   );
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  const pathname = usePathname();
-  const isHome = pathname === '/';
-
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-
-        {isHome && (
-          <div className="flex items-center justify-center bg-[#D52052] w-full">
-            <div className=" text-white text-sm px-4 py-3">
-              Machyna Media Coverage<span className="inline-block ml-1">↗</span>
-            </div>
-          </div>
-        )}
-
-        <Header/>
-        <BottomHeader/>
-        {children}
-        <Footer/>
+      <body className="...">
+        <Header />
+        <BottomHeader />
+        <ClientWrapper>{children}</ClientWrapper>
+        <Footer />
       </body>
     </html>
   );

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import ClientWrapper from './ClientWrapper';
 import Image from "next/image";
+import Link from "next/link";
 
 // import { Geist, Geist_Mono } from "next/font/google";
 // const geistSans = Geist({
@@ -24,29 +25,28 @@ export const metadata: Metadata = {
 
 function Header() {
   return(
-    <header className="flex items-center justify-between px-16 py-7 text-gray-700 text-lg  w-full border-b border-gray-300 mb-4">
-      <Image
-        src="/img/machyna_logo_black_text.png"
-        alt="Machyna Logo"
-        width={150} 
-        height={40}
-        className="h-14 w-auto"
-      />
-      <ul className="flex justify-between gap-6">
-        <li><a>Problem</a></li>
-        <li><a>About</a></li>
-        <li><a>Pricing</a></li>
-        <li><a>Blog</a></li>
-        <li><a>Get Started</a></li>
-      </ul>
-    </header>
-  );
-}
+    <div className="w-full border-b border-gray-300 mb-1">
+      <header className="flex items-center justify-between px-16 py-7 text-[#01191D] text-lg max-w[100%-3rem]">
+        <Link href="/">
+          <Image
+            src="/img/machyna_logo_black_text.png"
+            alt="Machyna Logo"
+            width={150} 
+            height={40}
+            draggable={false}
+            className="h-14 w-auto"
+          />
+        </Link>
 
-function BottomHeader() {
-  return (
-    <>
-    </> 
+        <ul className="flex justify-between gap-6 cursor-pointer">
+          <li><a>Problem</a></li>
+          <li><a>About</a></li>
+          <li><a>Pricing</a></li>
+          <li><a>Blog</a></li>
+          <li><a>Get Started</a></li>
+        </ul>
+      </header>
+    </div>
   );
 }
 
@@ -64,7 +64,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="...">
         <ClientWrapper>
           <Header />
-          <BottomHeader />
           {children}
           <Footer />
         </ClientWrapper>

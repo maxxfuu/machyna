@@ -1,10 +1,15 @@
+'use client'
+import {useEffect, useRef } from 'react';
 import { Cable, ChartColumnIncreasing} from 'lucide-react';
+import { motion } from 'motion/react';
+import { animate, stagger } from "motion";
+import { splitText } from "motion-plus";
 
 function HeroSection() {
   return (
-    <section className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center px-6 py-16 text-gray-700 `max-w-5xl mx-auto">
+    <section className="grid grid-cols-1 md:grid-cols-2 gap-80 items-center px-16 py-16 text-gray-700 `max-w-5xl mx-auto">
       <div>
-        <h1 className="text-6xl font-bold leading-tight">
+        <h1 className="text-[#001417] text-6xl font-bold leading-tight">
           <div>
             RISE ABOVE
           </div>
@@ -15,17 +20,25 @@ function HeroSection() {
       </div>
 
       <div className="space-y-6">
-        <p className="text-lg text-gray-700">
+        <p className="text-[#001417] text-lg">
         At Machyna, we’re revolutionizing retail with our interactive, intelligent, in-store
         Customer Engagement Platform.
         </p>
+
         <div className="flex gap-4">
-          <button className="px-6 py-3 rounded-lg bg-[#EB2845] text-white font-semibold">
+          <motion.button 
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="px-6 py-3 rounded-lg bg-[#D52052] text-white font-semibold cursor-pointer">
             Get Started
-          </button>
-          <button className="px-6 py-3 rounded-lg bg-black border text-white font-semibold">
+          </motion.button>
+
+          <motion.button 
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="px-6 py-3 rounded-lg bg-white border text-[#001417] font-semibold cursor-pointer">
             Join Us
-          </button>
+          </motion.button>
         </div>
       </div>
     </section>
@@ -34,48 +47,45 @@ function HeroSection() {
 
 function WhySection() {
   return(
-<section className="bg-[#B51A39] text-white px-6 py-20">
-  {/* Top heading and subheading */}
-  <div className="max-w-6xl mx-auto mb-16">
-    <span className="text-sm text-white font-semibold tracking-widest uppercase">
-      WHY SMARTCART?
-    </span>
-    <h2 className="text-3xl md:text-4xl font-bold mt-4">
-      SmartCart provides a <span className="text-[white]">seamless, secure, and personalized</span> experience.
-    </h2>
-  </div>
+    <section className="bg-[#B51A39] text-white px-16 py-20">
+      <div className="max-w-6xl mx-auto mb-16">
+        <span className="text-sm text-white font-semibold tracking-widest uppercase">
+          WHY SMARTCART?
+        </span>
 
-  {/* Grid layout with visual + 2 stats */}
-  <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
-    {/* Visual placeholder */}
-    <div className="hidden md:block">
-      {/* Could be an SVG or pattern image */}
-      <div className="w-full h-64 bg-dashed-pattern" />
-    </div>
+        {/* Need to add split text UI */}
+        <h2 className="text-3xl md:text-4xl font-bold mt-4">
+          SmartCart provides a <span className="text-[white]">seamless, secure, and personalized</span> experience.
+        </h2>
 
-    {/* Stat 1 */}
-    <div className="bg-[#0C1F24] p-6 rounded-lg border border-white/10">
-      <div className="flex gap-4 text-5xl mb-4">
-        <ChartColumnIncreasing/>
-        <h3 className="text-lg font-bold mb-2">Scalable</h3>
       </div>
-      <p className="text-sm text-gray-300">
-        Scalable to over 1,000,000 products without model retraining. No store infrastructure modification. Over-the-air software management. Modular software and POS integration
-      </p>
-    </div>
 
-    {/* Stat 2 */}
-    <div className="bg-[#0C1F24] p-6 rounded-lg border border-white/10">
-      <div className="flex gap-4 text-5xl mb-4">
-        <Cable/>
-        <h3 className="text-lg font-bold mb-2">Optimal & Efficient</h3>
+      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+        <div className="hidden md:block">
+          <div className="w-full h-64 bg-dashed-pattern" />
+        </div>
+
+        <div className="bg-[#001417] p-6 rounded-lg border border-white/10">
+          <div className="flex gap-4 text-5xl mb-4">
+            <ChartColumnIncreasing/>
+            <h3 className="text-lg font-bold mb-2">Scalable</h3>
+          </div>
+          <p className="text-sm text-gray-300">
+            Scalable to over 1,000,000 products without model retraining. No store infrastructure modification. Over-the-air software management. Modular software and POS integration
+          </p>
+        </div>
+
+        <div className="bg-[#0C1F24] p-6 rounded-lg border border-white/10">
+          <div className="flex gap-4 text-5xl mb-4">
+            <Cable/>
+            <h3 className="text-lg font-bold mb-2">Optimal & Efficient</h3>
+          </div>
+          <p className="text-sm text-gray-300"> 
+            First full-sized smart shopping cart. Frictionless checkout experience using AI barcode recognition. Nestable smart cart design. Lightweight, low-power, and low-cost
+          </p>
+        </div>
       </div>
-      <p className="text-sm text-gray-300"> 
-        First full-sized smart shopping cart. Frictionless checkout experience using AI barcode recognition. Nestable smart cart design. Lightweight, low-power, and low-cost
-      </p>
-    </div>
-  </div>
-</section>
+    </section>
   );
 }
 

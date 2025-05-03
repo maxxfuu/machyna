@@ -1,6 +1,6 @@
 'use client'
-import {useEffect, useRef, useState} from 'react';
-import { Cable, ChartColumnIncreasing, Dot} from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { Cable, ChartColumnIncreasing, Dot } from 'lucide-react';
 import { motion } from 'motion/react';
 import { animate, stagger } from "motion";
 import { splitText } from "motion-plus";
@@ -157,17 +157,18 @@ function HeroSection() {
   }, []);
 
   return (
-    <section className="grid grid-cols-1 md:grid-cols-2 gap-80 items-center px-16 py-20 text-gray-700">
-      <div>
-        <h1 className="text-[#001417] text-7xl font-bold leading-tight">
-          <div>
-            RISE ABOVE
-          </div>
-          <div>
-            COMPETITORS
-          </div>
-        </h1>
-      </div>
+    <section 
+      ref={containerRef} 
+      className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 xl:gap-24 items-center px-4 sm:px-8 md:px-16 xl:px-[4rem] 2xl:px-[12.8rem] py-8 sm:py-12 md:py-16 lg:py-20 text-gray-700"
+    >
+      <h1 className="text-[#001417] text-7xl font-bold leading-tight">
+        <div>
+          RISE ABOVE
+        </div>
+        <div>
+          COMPETITORS
+        </div>
+      </h1>
 
       <div className="space-y-15">
         <p className="text-[#5D686A] text-lg">

@@ -1,6 +1,7 @@
 'use client'
 
 import { usePathname } from 'next/navigation';
+import { ArrowUpRight } from 'lucide-react';
 
 export default function ClientWrapper({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -9,9 +10,9 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
   return (
     <>
       {isHome && (
-        <div className="flex items-center justify-center bg-[#B51A39] w-full">
-          <div className=" text-white text-sm px-4 py-3">
-            Machyna Media Coverage<span className="inline-block ml-1">↗</span>
+        <div className="flex items-center justify-center bg-[#B51A39] w-full cursor-pointer">
+          <div className="flex text-white text-sm px-4 py-3">
+            Machyna Media Coverage <ArrowUpRight size={20} />
           </div>
         </div>
       )}

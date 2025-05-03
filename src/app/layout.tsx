@@ -25,15 +25,16 @@ export const metadata: Metadata = {
 
 function Header() {
   return(
-    <div className="w-full border-b border-gray-300 mb-1">
-      <header className="flex items-center justify-between px-16 py-7 text-[#01191D] text-lg max-w[100%-3rem]">
+    <header className="px-4 sm:px-8 md:px-16 xl:px-[4rem] 2xl:px-[12.8rem] py-7 text-[#01191D] text-lg mt-1">
+      <div className="flex items-center justify-between border-b border-gray-300 pb-6">
         <Link href="/">
           <Image
-            src="/img/machyna_logo_black_text.png"
+            src="/img/machyna_logo_black_text.svg"
             alt="Machyna Logo"
             width={150} 
             height={40}
             draggable={false}
+            priority={true}
             className="h-14 w-auto"
           />
         </Link>
@@ -45,8 +46,8 @@ function Header() {
           <li><a>Blog</a></li>
           <li><a>Get Started</a></li>
         </ul>
-      </header>
-    </div>
+      </div>
+    </header>
   );
 }
 

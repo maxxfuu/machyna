@@ -171,7 +171,7 @@ function HeroSection() {
 
       <div className="space-y-15">
         <p className="text-[#5D686A] text-lg">
-        At Machyna, we're revolutionizing retail with our interactive, intelligent, in-store
+        At Machyna, we&apos;re revolutionizing retail with our interactive, intelligent, in-store
         Customer Engagement Platform.
         </p>
 

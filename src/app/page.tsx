@@ -1,6 +1,6 @@
 'use client'
 import {useEffect, useRef } from 'react';
-import { Cable, ChartColumnIncreasing} from 'lucide-react';
+import { Cable, ChartColumnIncreasing, Dot} from 'lucide-react';
 import { motion } from 'motion/react';
 import { animate, stagger } from "motion";
 import { splitText } from "motion-plus";
@@ -46,17 +46,45 @@ function HeroSection() {
 }
 
 function WhySection() {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    document.fonts.ready.then(() => {
+      if (!containerRef.current) return;
+
+      containerRef.current.style.visibility = 'visible';
+
+      const h2 = containerRef.current.querySelector('h2');
+      if (!h2) return;
+
+      const { words } = splitText(h2);
+
+      animate(
+        words,
+        { opacity: [0, 1], y: [10, 0] },
+        {
+          type: 'spring',
+          duration: 2,
+          bounce: 0,
+          delay: stagger(0.05),
+        }
+      );
+    });
+  }, []);
+
   return(
     <section className="bg-[#B51A39] text-white px-16 py-20">
       <div className="max-w-6xl mx-auto mb-16">
         <span className="text-sm text-white font-semibold tracking-widest uppercase">
-          WHY SMARTCART?
-        </span>
-
-        {/* Need to add split text UI */}
-        <h2 className="text-3xl md:text-4xl font-bold mt-4">
-          SmartCart provides a <span className="text-[white]">seamless, secure, and personalized</span> experience.
-        </h2>
+          <div className='flex items-center'>
+            <Dot/> Why SMARTCART ?
+          </div> 
+        </span> 
+        <div className="container" ref={containerRef} style={{ visibility: "hidden" }}>
+          <h2 className="text-3xl md:text-4xl font-bold mt-4">
+            SmartCart provides a <span className="text-[white]">seamless, secure, and personalized</span> experience.
+          </h2>
+        </div> 
 
       </div>
 

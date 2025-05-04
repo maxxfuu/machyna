@@ -224,9 +224,9 @@ function WhySection() {
   }, []);
 
   return(
-    <section className="bg-[#01191D] text-white px-16 py-20">
+    <section className="bg-[#B51A38] text-white px-16 py-20">
       <div className="max-w-6xl mx-auto mb-16">
-        <span className="text-sm text-[#D51F52] font-semibold tracking-widest uppercase">
+        <span className="text-sm text-[#ffff] font-semibold tracking-widest uppercase">
           <div className='flex items-center'>
             <Dot/> Why SMARTCART ?
           </div> 
@@ -271,12 +271,21 @@ function WhySection() {
   );
 }
 
+function QuestionSection() {
+  return(
+    <section className='bg-white text-black px-4 sm:px-8 md:px-16 xl:px-[4rem] 2xl:px-[12.8rem] py-8 sm:py-12 md:py-16 lg:py-20'>
+      <h2>QUESTION SECTION</h2>
+    </section>
+  );
+}
+
 export default function Home() {
   return (
     <div>
       <CursorLines/>
       <HeroSection/>
       <WhySection/>
+      <QuestionSection/>
     </div>
   );
 }

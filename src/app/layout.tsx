@@ -10,10 +10,12 @@ import Link from "next/link";
 //   subsets: ["latin"],
 // });
 
-// const geistMono = Geist_Mono({
-//   variable: "--font-geist-mono",
-//   subsets: ["latin"],
-// });
+import { Barlow_Semi_Condensed } from 'next/font/google';
+const barlowsemicondensed = Barlow_Semi_Condensed({
+  subsets: ['latin'],
+  weight: ['400', '600', '700'],
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   title: "Machyna",
@@ -62,7 +64,7 @@ function Footer() {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="...">
+      <body className={barlowsemicondensed.className}>
         <ClientWrapper>
           <Header />
           {children}

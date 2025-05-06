@@ -1,9 +1,17 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { Cable, ChartColumnIncreasing, Dot } from "lucide-react";
+import { Cable, ChartColumnIncreasing, Dot, ChevronRight } from "lucide-react";
 import { motion } from "motion/react";
 import { animate, stagger } from "motion";
 import { splitText } from "motion-plus";
+
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
 // import EmblaCarousel from "@/components/carousel/EmblaCarousel";
 // import { EmblaOptionsType } from "embla-carousel";
 // import "@/components/carousel/base.css";
@@ -257,29 +265,37 @@ function WhySection() {
           <div className="w-full h-64 bg-dashed-pattern" />
         </div>
 
-        <div className="bg-[#0C1F24] p-6 rounded-lg border border-white/10">
+        <div className="bg-[#F6F6F6] px-8 py-6 rounded-lg border border-white/10">
           <div className="flex gap-4 text-5xl mb-4">
-            <ChartColumnIncreasing />
-            <h3 className="text-lg font-bold mb-2">Scalable</h3>
+            <ChartColumnIncreasing color="#01191D" />
+            <h3 className="text-lg text-[#01191D] font-bold mb-2">Scalable</h3>
           </div>
-          <p className="text-sm text-gray-300">
-            Scalable to over 1,000,000 products without model retraining. No
-            store infrastructure modification. Over-the-air software management.
-            Modular software and POS integration
-          </p>
+          <ul className="text-[#01191D] list-disc">
+            <li>
+              Scalable to over 1,000,000 products without model retraining.
+            </li>
+            <li>No store infrastructure modification.</li>
+            <li>Over-the-air software management.</li>
+            <li>Modular software and POS integration</li>
+          </ul>
         </div>
 
         {/* Card 2 */}
-        <div className="bg-[#0C1F24] p-6 rounded-lg border border-white/10">
+        <div className="bg-[#F6F6F6] px-8 py-6 rounded-lg border border-white/10">
           <div className="flex gap-4 text-5xl mb-4">
-            <Cable />
-            <h3 className="text-lg font-bold mb-2">Optimal & Efficient</h3>
+            <Cable color="#01191D" />
+            <h3 className="text-lg text-[#01191D] font-bold mb-2">
+              Optimal & Efficient
+            </h3>
           </div>
-          <p className="text-sm text-gray-300">
-            First full-sized smart shopping cart. Frictionless checkout
-            experience using AI barcode recognition. Nestable smart cart design.
-            Lightweight, low-power, and low-cost
-          </p>
+          <ul className="text-[#01191D] list-disc">
+            <li>First full-sized smart shopping cart.</li>
+            <li>
+              Frictionless checkout experience using AI barcode recognition.
+            </li>
+            <li>Nestable smart cart design.</li>
+            <li>Lightweight, low-power, and low-cost</li>
+          </ul>
         </div>
       </div>
     </section>
@@ -299,8 +315,62 @@ function WhySection() {
 
 function QuestionSection() {
   return (
-    <section className="bg-white text-black px-4 sm:px-8 md:px-16 xl:px-[4rem] 2xl:px-[12.8rem] py-8 sm:py-12 md:py-16 lg:py-20">
-      <h2>QUESTION SECTION</h2>
+    <section className="bg-white text-[#01191D] px-4 sm:px-8 md:px-16 xl:px-[4rem] 2xl:px-[12.8rem] py-8 sm:py-12 md:py-16 lg:py-20 space-y-6">
+      <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6">FAQs</h2>
+      <Accordion type="single" collapsible className="space-y-4">
+        <AccordionItem value="item-1">
+          <AccordionTrigger className="text-lg md:text-xl font-semibold">
+            Is Checkout Faster?
+          </AccordionTrigger>
+          <AccordionContent className="text-base text-gray-600">
+            Yes—fast, contactless shopping powered by frontier computer vision
+            means no more waiting in line.
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-2">
+          <AccordionTrigger className="text-lg md:text-xl font-semibold">
+            Does it protect against Theft?
+          </AccordionTrigger>
+          <AccordionContent className="text-base text-gray-600">
+            Yes. Each item is verified by weight, and a camera records every
+            shopping session.
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-3">
+          <AccordionTrigger className="text-lg md:text-xl font-semibold">
+            Does it SmartCart Need Recharging?
+          </AccordionTrigger>
+          <AccordionContent className="text-base text-gray-600">
+            Yes. The SmartCart has a 14+ hour battery life before the batteries
+            needs to be charged or swapped.
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-4">
+          <AccordionTrigger className="text-lg md:text-xl font-semibold">
+            Does the SmartCart increase average order value?
+          </AccordionTrigger>
+          <AccordionContent className="text-base text-gray-600">
+            Yes. SmartCart boosts average order value by suggesting relevant
+            add-ons based on items in the cart."
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+
+      <div className="bg-[#F6F6F6] rounded-4xl p-26 mt-12">
+        <div className="max-w-3xl mx-auto text-center space-y-4">
+          <h2 className="text-6xl md:text-4xl font-bold">
+            Transform your shopping experience
+          </h2>
+          <p className="text-lg text-gray-700">
+            Reduce wait times, drive revenue and delight your customers with
+            Machyna&apos;s SmartCart.
+          </p>
+          <button className="mt-6 px-6 py-3 bg-black text-white rounded-full font-semibold inline-flex items-center">
+            Book a Demo
+            <ChevronRight />
+          </button>
+        </div>
+      </div>
     </section>
   );
 }

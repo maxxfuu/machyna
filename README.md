@@ -1,4 +1,8 @@
 To Do List
 
-- [x] Add Hero Section using grid 
-- [x] Tailwind grid columns
+- [ ] Finish Drop Down Question Section
+- [ ] Imporve Navbar with Static
+- [ ] Finish Image Carousel  
+- [ ] Polish Footer
+- [ ] Set up all Nav Links
+- [ ] Polish Theme Colouring 

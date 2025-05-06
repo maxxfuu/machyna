@@ -271,6 +271,14 @@ function WhySection() {
   );
 }
 
+function CarouselSection() {
+  return(
+    <div>
+      
+    </div>
+  );
+}
+
 function QuestionSection() {
   return(
     <section className='bg-white text-black px-4 sm:px-8 md:px-16 xl:px-[4rem] 2xl:px-[12.8rem] py-8 sm:py-12 md:py-16 lg:py-20'>
@@ -285,6 +293,7 @@ export default function Home() {
       <CursorLines/>
       <HeroSection/>
       <WhySection/>
+      <CarouselSection/>
       <QuestionSection/>
     </div>
   );

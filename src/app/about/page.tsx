@@ -11,8 +11,8 @@ export default function about() {
       <a className="text-[#01191D] py-19">
         At Machyna, our journey began with a clear mission: redefine retail.
         Driven by a shared passion for innovation and a belief in the power of
-        technology, we've blended our skills and experience in cutting-edge tech
-        to craft a shopping experience that serves people and businesses.
+        technology, we&apos;ve blended our skills and experience in cutting-edge
+        tech to craft a shopping experience that serves people and businesses.
       </a>
 
       {/* Victor Chan */}

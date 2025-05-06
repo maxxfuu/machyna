@@ -4,7 +4,7 @@ import ClientWrapper from "../components/ClientWrapper";
 import Image from "next/image";
 import Link from "next/link";
 import { Linkedin } from "lucide-react";
-import ClientNavbar from "@/components/ClientNavbar";
+// import ClientNavbar from "@/components/ClientNavbar";
 
 import { Barlow_Semi_Condensed } from "next/font/google";
 const barlowsemicondensed = Barlow_Semi_Condensed({

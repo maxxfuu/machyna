@@ -351,7 +351,7 @@ function QuestionSection() {
           </AccordionTrigger>
           <AccordionContent className="text-base text-gray-600">
             Yes. SmartCart boosts average order value by suggesting relevant
-            add-ons based on items in the cart."
+            add-ons based on items in the cart.
           </AccordionContent>
         </AccordionItem>
       </Accordion>

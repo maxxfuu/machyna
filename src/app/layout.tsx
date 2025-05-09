@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   title: "Machyna",
   description: "Enrich your shopping journey with Machyna AI SmartCart",
   icons: {
-    icon: "/img/favicon.ico",
+    icon: "/machyna_logo/favicon.ico",
   },
 };
 
@@ -27,7 +27,7 @@ function Header() {
       <div className="flex items-center justify-between border-b border-gray-300 pb-6">
         <Link href="/">
           <Image
-            src="/img/machyna_logo_black_text.svg"
+            src="/machyna_logo/machyna_logo_black_text.svg"
             alt="Machyna Logo"
             width={150}
             height={40}
@@ -81,7 +81,7 @@ function Footer() {
         {/* Machyna Logo */}
         <div>
           <Image
-            src="/img/machyna_logo_white_text.svg"
+            src="/machyna_logo/machyna_logo_white_text.svg"
             alt="Machyna Logo"
             width={60}
             height={16}

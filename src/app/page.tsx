@@ -1,7 +1,14 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { Cable, ChartColumnIncreasing, Dot, ChevronRight } from "lucide-react";
-import { motion } from "motion/react";
+import {
+  Cable,
+  ChartColumnIncreasing,
+  Dot,
+  ChevronRight,
+  Check,
+  ChevronLeft,
+} from "lucide-react";
+import { motion, useInView } from "motion/react";
 import { animate, stagger } from "motion";
 import { splitText } from "motion-plus";
 
@@ -11,11 +18,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-
-// import EmblaCarousel from "@/components/carousel/EmblaCarousel";
-// import { EmblaOptionsType } from "embla-carousel";
-// import "@/components/carousel/base.css";
-// import "@/components/carousel/embla.css";
 
 function CursorLines() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -302,16 +304,206 @@ function WhySection() {
   );
 }
 
-// function CarouselSection() {
-//   const OPTIONS: EmblaOptionsType = { loop: true };
-//   const SLIDE_COUNT = 5;
-//   const SLIDES = Array.from(Array(SLIDE_COUNT).keys());
-//   return (
-//     <div>
-//       <EmblaCarousel slides={SLIDES} options={OPTIONS} />
-//     </div>
-//   );
-// }
+function InStoreBenefitsSection() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  const cards = [
+    {
+      img: "https://via.placeholder.com/350x200?text=Incremental+Spend",
+      title: "Incremental consumer spend",
+      bullets: [
+        "Larger baskets during shops",
+        "More frequent return trips",
+        "Increased LTV of every customer",
+      ],
+    },
+    {
+      img: "https://via.placeholder.com/350x200?text=Revenue+Streams",
+      title: "Alternate revenue streams",
+      bullets: [
+        "Personalized, location-based and real-time contextual advertising",
+        "Drive engagement and usage of digital coupons via onboard screen",
+      ],
+    },
+    {
+      img: "https://via.placeholder.com/350x200?text=Seamless+Integration",
+      title: "Seamless integration",
+      bullets: [
+        "Works with your existing POS system and loyalty program",
+        "Provides easy access to cart monitoring tools to help prevent shrink",
+      ],
+    },
+  ];
+
+  return (
+    <section className="bg-white py-20 px-4 sm:px-8 md:px-16 xl:px-[4rem] 2xl:px-[12.8rem]">
+      <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-[#001417]">
+        Seamless and personalized in-store shopping experience
+      </h2>
+      <div
+        ref={ref}
+        className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 items-start"
+      >
+        {cards.map((card, i) => (
+          <motion.div
+            key={card.title}
+            initial={{ opacity: 0, y: 60 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{
+              duration: 0.7,
+              delay: isInView ? i * 0.25 : 0,
+              ease: "easeOut",
+            }}
+            className="bg-[#F6F6F6] rounded-2xl shadow-lg border border-gray-100 p-8 flex flex-col items-center text-center"
+          >
+            <img
+              src={card.img}
+              alt={card.title}
+              className="rounded-xl mb-6 w-full h-48 object-cover"
+            />
+            <h3 className="text-xl font-bold text-[#001417] mb-4">
+              {card.title}
+            </h3>
+            <ul className="text-[#5D686A] text-base space-y-2 text-left">
+              {card.bullets.map((b, j) => (
+                <li key={j} className="flex items-start gap-2">
+                  <span className="text-[#D52052] text-lg mt-1">
+                    <Check />
+                  </span>
+                  <span>{b}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function TestimonialCarouselSection() {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+    document.fonts.ready.then(() => {
+      if (!containerRef.current) return;
+
+      containerRef.current.style.visibility = "visible";
+
+      const h2 = containerRef.current.querySelector("h2");
+      if (!h2) return;
+
+      const { words } = splitText(h2);
+
+      animate(
+        words,
+        { opacity: [0, 1], y: [10, 0] },
+        {
+          type: "spring",
+          duration: 2,
+          bounce: 0,
+          delay: stagger(0.05),
+        }
+      );
+    });
+  }, []);
+
+  const media = [
+    {
+      img: "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80",
+    },
+    {
+      img: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80",
+    },
+    {
+      img: "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80",
+    },
+  ];
+
+  const [current, setCurrent] = useState(0);
+  const imgRef = useRef(null);
+  const inView = useInView(imgRef, { once: true, margin: "-100px" });
+
+  const handlePrev = () =>
+    setCurrent((prev) => (prev === 0 ? media.length - 1 : prev - 1));
+  const handleNext = () =>
+    setCurrent((prev) => (prev === media.length - 1 ? 0 : prev + 1));
+
+  return (
+    <section className="bg-[#F7F9F8] py-24 px-4 sm:px-8 md:px-16 xl:px-[4rem] 2xl:px-[12.8rem]">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        {/* Left column */}
+        <div className="space-y-8">
+          <h2 className="text-4xl md:text-5xl font-bold text-[#232323]">
+            Machyna in the media
+          </h2>
+          <button className="mt-6 px-8 py-4 bg-[#232323] text-white rounded-full font-semibold text-lg inline-flex items-center gap-2 cursor-pointer">
+            Learn more about Machyna <ChevronRight />
+          </button>
+          <div className="flex gap-4 mt-12">
+            {/* left button */}
+            <motion.button
+              aria-label="Previous testimonial"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={handlePrev}
+              className="group flex flex-row items-center justify-center w-12 h-12 rounded-full bg-[#ffff] border-2 border-[#232323] bg-[#fffff] cursor-pointer hover:bg-[#232323] transition-colors duration-300"
+            >
+              <ChevronLeft
+                className="transition-colors duration-300 group-hover:text-white"
+                style={{ color: "#232323" }}
+              />
+            </motion.button>
+
+            {/* right button */}
+            <motion.button
+              aria-label="Next testimonial"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={handleNext}
+              className="group flex flex-row items-center justify-center w-12 h-12 rounded-full bg-[#ffff] border-2 border-[#232323] bg-[#fffff] cursor-pointer hover:bg-[#232323] transition-colors duration-300"
+            >
+              <ChevronRight
+                className="transition-colors duration-300 group-hover:text-white"
+                style={{ color: "#232323" }}
+              />
+            </motion.button>
+          </div>
+        </div>
+
+        {/* Right column */}
+        <div className="relative overflow-hidden">
+          {/* Left margin/gradient overlay */}
+          <div className="absolute left-0 top-0 w-16 h-full bg-gradient-to-r from-[#F7F9F8] to-transparent z-10"></div>
+
+          {/* Image carousel */}
+          <motion.div
+            className="flex"
+            animate={{ x: -current * 100 + "%" }}
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            ref={imgRef}
+          >
+            {media.map((item, index) => (
+              <motion.div
+                key={index}
+                className="min-w-full px-4"
+                initial={{ opacity: 0 }}
+                animate={inView ? { opacity: 1 } : {}}
+                transition={{ delay: 0.2 }}
+              >
+                <img
+                  src={item.img}
+                  alt={`Media ${index + 1}`}
+                  className="w-full h-80 object-cover rounded-lg shadow-lg"
+                />
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
 
 function QuestionSection() {
   return (
@@ -323,8 +515,8 @@ function QuestionSection() {
             Is Checkout Faster?
           </AccordionTrigger>
           <AccordionContent className="text-base text-gray-600">
-            Yes—fast, contactless shopping powered by frontier computer vision
-            means no more waiting in line.
+            Yes. The SmartCart enables fast and contactless shopping powered by
+            frontier computer vision models means no more waiting in line.
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-2">
@@ -381,7 +573,8 @@ export default function Home() {
       <CursorLines />
       <HeroSection />
       <WhySection />
-      {/* <CarouselSection /> */}
+      <InStoreBenefitsSection />
+      <TestimonialCarouselSection />
       <QuestionSection />
     </div>
   );

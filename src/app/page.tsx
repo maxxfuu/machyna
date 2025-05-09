@@ -472,34 +472,7 @@ function TestimonialCarouselSection() {
         </div>
 
         {/* Right column */}
-        <div className="relative overflow-hidden">
-          {/* Left margin/gradient overlay */}
-          <div className="absolute left-0 top-0 w-16 h-full bg-gradient-to-r from-[#F7F9F8] to-transparent z-10"></div>
-
-          {/* Image carousel */}
-          <motion.div
-            className="flex"
-            animate={{ x: -current * 100 + "%" }}
-            transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            ref={imgRef}
-          >
-            {media.map((item, index) => (
-              <motion.div
-                key={index}
-                className="min-w-full px-4"
-                initial={{ opacity: 0 }}
-                animate={inView ? { opacity: 1 } : {}}
-                transition={{ delay: 0.2 }}
-              >
-                <img
-                  src={item.img}
-                  alt={`Media ${index + 1}`}
-                  className="w-full h-80 object-cover rounded-lg shadow-lg"
-                />
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
+        <div className="relative overflow-hidden h-96 w-full"></div>
       </div>
     </section>
   );

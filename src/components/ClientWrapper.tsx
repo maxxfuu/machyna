@@ -1,11 +1,15 @@
-'use client'
+"use client";
 
-import { usePathname } from 'next/navigation';
-import { ArrowUpRight } from 'lucide-react';
+import { usePathname } from "next/navigation";
+import { ArrowUpRight } from "lucide-react";
 
-export default function ClientWrapper({ children }: { children: React.ReactNode }) {
+export default function ClientWrapper({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const pathname = usePathname();
-  const isHome = pathname === '/';
+  const isHome = pathname === "/";
 
   return (
     <>
